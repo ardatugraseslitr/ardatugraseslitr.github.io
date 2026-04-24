@@ -3,130 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATS Kültür</title>
+    <title>ATS Kültür | Material Design 3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Genel Arka Plan ve Düzen */
+        /* MD3 Renk Paleti (Koyu Turkuaz / Dark Teal Tema) */
+        :root {
+            --md-sys-color-surface: #191c1c;
+            --md-sys-color-on-surface: #e0e3e2;
+            --md-sys-color-surface-container: #1e2524;
+            --md-sys-color-secondary-container: #334b4a; /* Vurgu (Hover) Rengi */
+            --md-sys-color-primary: #4ddad7;
+            --md-sys-color-primary-container: #00504d;
+            --md-sys-color-outline: #899391;
+        }
+
         body {
-            background-color: #1c1c1c; /* Koyu gri/siyah arka plan */
-            color: #ffffff;
-            font-family: 'Quicksand', 'Segoe UI', Tahoma, sans-serif;
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* Üst Menü (Turkuaz Şerit) */
-        .custom-header {
-            background-color: #008B8B; /* Görseldeki turkuaz tonu */
-            padding: 15px 50px;
+        /* MD3 Üst Bar (Top App Bar) */
+        .md3-top-bar {
+            padding: 12px 20px;
             display: flex;
-            align-items: baseline;
-        }
-        .logo-ats {
-            font-size: 3rem;
-            font-weight: 600;
-            color: #ffffff !important;
-            text-decoration: none;
-            margin-right: 20px;
-            text-transform: uppercase;
-        }
-        .header-title {
-            font-size: 1.5rem;
-            color: #ffffff;
+            align-items: center;
+            gap: 8px; /* ATS ve Kültür arasındaki boşluk */
+            background-color: var(--md-sys-color-surface);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        /* Slider (Carousel) Alanı */
+        /* Navigasyon Öğesi Kapsayıcısı (Hap Şeklinde Vurgu) */
+        .nav-item-wrapper {
+            position: relative;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 100px; /* Tam hap/pill kavis şekli */
+            transition: background-color 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item-wrapper:hover {
+            background-color: var(--md-sys-color-secondary-container);
+        }
+
+        .logo-ats {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--md-sys-color-primary) !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .text-kultur {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--md-sys-color-on-surface);
+            text-decoration: none;
+        }
+
+        /* MD3 Kart / Konteyner Tasarımı */
         .carousel-container {
-            margin: 60px auto;
+            margin: 40px auto;
             max-width: 900px;
+            padding: 0 16px;
+            flex-grow: 1; /* Alt bilginin en alta itilmesini sağlar */
         }
+
         .carousel-inner {
-            background-color: #ffffff;
-            color: #000000;
-            height: 300px; /* Görseldeki geniş beyaz alan */
+            background-color: var(--md-sys-color-surface-container);
+            border-radius: 28px;
+            height: 350px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .carousel-item.active, .carousel-item {
-            height: 100%;
-        }
+
         .slider-content {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100%;
             text-align: center;
-            padding: 0 80px;
+            padding: 0 60px;
         }
-        
-        /* Oklar ve Noktalar */
+
+        .slider-content h3 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        /* MD3 Floating Action Button (FAB) Tarzı Oklar */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 56px;
+            height: 56px;
+            background-color: var(--md-sys-color-primary-container);
+            border-radius: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 1;
+            margin: 0 20px;
+            transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background-color: var(--md-sys-color-primary);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        }
+
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
-            filter: invert(1) grayscale(100); /* Beyaz okları siyah yapar */
-            width: 3rem;
-            height: 3rem;
+            width: 24px;
+            height: 24px;
         }
+
+        /* MD3 Gösterge Noktaları */
         .carousel-indicators {
-            bottom: -50px; /* Noktaları beyaz alanın altına iter */
+            bottom: -50px;
+            gap: 8px;
         }
+
         .carousel-indicators [data-bs-target] {
-            background-color: #ffffff;
-            width: 12px;
-            height: 12px;
+            background-color: var(--md-sys-color-outline);
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            margin: 0 6px;
+            border: none;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+
+        .carousel-indicators .active {
+            background-color: var(--md-sys-color-primary);
+            width: 24px;
+            border-radius: 4px; /* Hap görünümü */
         }
 
         /* Alt Bilgi */
         .custom-footer {
-            margin-top: auto;
-            border-top: 2px solid #ffffff;
-            padding: 15px 50px;
-            font-size: 1rem;
+            padding: 24px 32px;
+            color: var(--md-sys-color-outline);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--md-sys-color-surface-container);
         }
     </style>
 </head>
 <body>
 
-    <header class="custom-header">
-        <a href="index.html" class="logo-ats">ATS</a>
-        <span class="header-title">Kültür</span>
+    <header class="md3-top-bar">
+        <a href="index.html" class="nav-item-wrapper">
+            <span class="logo-ats">ATS</span>
+        </a>
+
+        <a href="kultur.html" class="nav-item-wrapper">
+            <span class="text-kultur">Kültür</span>
+        </a>
     </header>
 
     <main class="container carousel-container">
-        <div id="makaleSlider" class="carousel slide" data-bs-ride="carousel">
-            
+        <div id="atsSlider" class="carousel slide" data-bs-ride="carousel">
+
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="slider-content">
-                        <h5>Son yazdığım makalelerin tanıtımı burda görülecek</h5>
+                        <h3>Şu anda burada bir şey yok :)</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="slider-content">
-                        <h5>Ahilik ve Paylaşım Kültürü Üzerine Notlar</h5>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="slider-content">
-                        <h5>Açık Kaynak Toplum İnşası</h5>
+                        <h3>Şu anda burada bir şey yok :)</h3>
                     </div>
                 </div>
             </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#makaleSlider" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#atsSlider" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Önceki</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#makaleSlider" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#atsSlider" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Sonraki</span>
             </button>
 
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#makaleSlider" data-bs-slide-to="0" class="active" aria-current="true"></button>
-                <button type="button" data-bs-target="#makaleSlider" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#makaleSlider" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#atsSlider" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#atsSlider" data-bs-slide-to="1"></button>
             </div>
         </div>
     </main>
