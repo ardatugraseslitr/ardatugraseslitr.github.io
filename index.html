@@ -3,67 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kedimin Sitesi</title>
+    <title>ATS Kültür</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Görseldeki pembe/kırmızı tonları için küçük dokunuşlar */
-        .brand-color { color: #d63384; }
-        .brand-border { border-bottom: 5px solid #d63384; }
+        /* Genel Arka Plan ve Düzen */
+        body {
+            background-color: #1c1c1c; /* Koyu gri/siyah arka plan */
+            color: #ffffff;
+            font-family: 'Quicksand', 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Üst Menü (Turkuaz Şerit) */
+        .custom-header {
+            background-color: #008B8B; /* Görseldeki turkuaz tonu */
+            padding: 15px 50px;
+            display: flex;
+            align-items: baseline;
+        }
+        .logo-ats {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #ffffff !important;
+            text-decoration: none;
+            margin-right: 20px;
+            text-transform: uppercase;
+        }
+        .header-title {
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+
+        /* Slider (Carousel) Alanı */
+        .carousel-container {
+            margin: 60px auto;
+            max-width: 900px;
+        }
+        .carousel-inner {
+            background-color: #ffffff;
+            color: #000000;
+            height: 300px; /* Görseldeki geniş beyaz alan */
+        }
+        .carousel-item.active, .carousel-item {
+            height: 100%;
+        }
+        .slider-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            padding: 0 80px;
+        }
+        
+        /* Oklar ve Noktalar */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(1) grayscale(100); /* Beyaz okları siyah yapar */
+            width: 3rem;
+            height: 3rem;
+        }
+        .carousel-indicators {
+            bottom: -50px; /* Noktaları beyaz alanın altına iter */
+        }
+        .carousel-indicators [data-bs-target] {
+            background-color: #ffffff;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 6px;
+        }
+
+        /* Alt Bilgi */
+        .custom-footer {
+            margin-top: auto;
+            border-top: 2px solid #ffffff;
+            padding: 15px 50px;
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-        <div class="container">
-            <a class="navbar-brand brand-color fw-bold" href="#">🐱 Kedimin Sitesi</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Anasayfa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Makaleler</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Videolar</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <header class="custom-header">
+        <a href="index.html" class="logo-ats">ATS</a>
+        <span class="header-title">Kültür</span>
+    </header>
 
-    <div class="container mt-4">
-        <div class="p-5 text-center bg-light rounded-3 shadow-sm brand-border">
-            <h1 class="brand-color fw-bold">Yeni Makalelerle Tanışın!</h1>
-            <p class="lead">Açık kaynak felsefesi, bilinçli toplum inşası ve kedimin günlüğü artık burada.</p>
-        </div>
-    </div>
+    <main class="container carousel-container">
+        <div id="makaleSlider" class="carousel slide" data-bs-ride="carousel">
+            
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="slider-content">
+                        <h5>Son yazdığım makalelerin tanıtımı burda görülecek</h5>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="slider-content">
+                        <h5>Ahilik ve Paylaşım Kültürü Üzerine Notlar</h5>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="slider-content">
+                        <h5>Açık Kaynak Toplum İnşası</h5>
+                    </div>
+                </div>
+            </div>
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm h-100">
-                    <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Görsel 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Ahilik ve Paylaşım</h5>
-                        <p class="card-text">Toplumsal dayanışmanın temelleri.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm h-100">
-                    <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Görsel 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Pardus Deneyimleri</h5>
-                        <p class="card-text">Açık kaynak işletim sistemiyle özgürleşin.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm h-100">
-                    <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Görsel 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Kedi Videoları</h5>
-                        <p class="card-text">Günün yorgunluğunu atın.</p>
-                    </div>
-                </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#makaleSlider" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Önceki</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#makaleSlider" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Sonraki</span>
+            </button>
+
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#makaleSlider" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#makaleSlider" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#makaleSlider" data-bs-slide-to="2"></button>
             </div>
         </div>
-    </div>
+    </main>
+
+    <footer class="custom-footer">
+        # sayfa sonu
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
